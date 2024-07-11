@@ -1,27 +1,35 @@
 require 'test_helper'
 
-class CategoryTest < ActiveSupport::TestCase
-  def setup
-    @category = Category.new(name: "Example Category", description: "Example description")
+class CategoriesControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @category = categories(:one)
   end
 
-  test "should be valid with a name and description" do
-    assert @category.valid?
+  test "should get index" do
+    get categories_url
+    assert_response :success
   end
 
-  test "should be invalid without a name" do
-    @category.name = nil
-    assert_not @category.valid?
+  test "should get new" do
+    get new_category_url
+    assert_response :success
+  end
+  
+  test "should create new category" do
+    assert_difference("Category.count") do
+      post categories_url, params: { category: { name: "UNIQUE NAME", description: "CATEGORY DESCRIPTION" } }
+    end
+
+    assert_redirected_to category_url(Category.last)
   end
 
-  test "should be invalid without a description" do
-    @category.description = nil
-    assert_not @category.valid?
+  test "should get edit" do
+    get edit_category_url(@category)
+    assert_response :success
   end
 
-  test "should be invalid with a duplicate name" do
-    @category.save
-    duplicate_category = Category.new(name: @category.name, description: "Another description")
-    assert_not duplicate_category.valid?
+  test "should update category" do
+    patch category_url(@category), params: {category: { name: "UPDATED NAME", description: "UPDATED DESCRIPTION" } }
+    assert_redirected_to category_url(@category)
   end
 end
