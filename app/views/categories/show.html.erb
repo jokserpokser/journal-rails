@@ -1,7 +1,10 @@
+<%= link_to 'Back', categories_path %>
 <h1>Category Name: <%= @category.name %></h1>
 <p>Description: <%= @category.description %></p>
 
 <br/>
+<%= link_to 'View Tasks', category_tasks_path(@category) %>
+<br/>
 <%= link_to 'Edit Category', edit_category_path %>
 <br/>
-<%= link_to 'Back', categories_path %>
+

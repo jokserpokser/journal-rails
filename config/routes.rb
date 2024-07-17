@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :categories, only: [:new, :create, :index, :show, :edit, :update]
+  resources :categories do
+    resources :tasks
+  end
+  
 
   # get '/categories' => 'categories#index'
   # get '/categories/new' => 'categories#new', as: 'new_category'

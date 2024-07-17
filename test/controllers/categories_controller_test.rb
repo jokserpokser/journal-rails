@@ -3,6 +3,8 @@ require 'test_helper'
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
   setup do
+    @user = users(:one) # Assuming you have fixtures or factories set up
+    sign_in @user
     @category = categories(:one)
   end
 
