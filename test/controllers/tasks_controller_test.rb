@@ -38,7 +38,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update task" do
-    patch category_task_url(@category, @task), params: { task: { name: 'Updated Task' } }
+    patch category_task_path(@category, @task), params: { task: { name: 'Updated Task' } }
     assert_redirected_to category_task_url(@category, @task)
   end
 
