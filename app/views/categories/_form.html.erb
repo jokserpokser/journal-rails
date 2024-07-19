@@ -10,15 +10,16 @@
       </div>
     <% end %>
   
-    <div>
-      <%= form.label :name %>
+    <div class="form-container">
+      <%= form.label :name %> 
       <%= form.text_field :name %>
-      <br/>
       <%= form.label :description %>
       <%= form.text_field :description %>
+
+      <div class="form-submit">
+        <%= form.submit %>
+      </div>
     </div>
   
-    <div>
-      <%= form.submit %>
-    </div>
+   
 <% end %>

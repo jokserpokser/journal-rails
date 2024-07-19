@@ -1,8 +1,16 @@
-<%= link_to 'Back', category_path(@category) %>
-<h1>Tasks to be done</h1>
-<%= link_to 'Add Task', new_category_task_path %>
-<ol>
+
+<div class="container">
+  <%= link_to 'Back', category_path(@category) %>
+  <h4><%= @category.name%></h4>
+  
+  <span class="add-category-link">
+    <%= link_to 'Add Task', new_category_task_path %>
+  </span>
+  
+  <h5>Tasks</h5>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.name, category_task_path(@category, task) %></li>
+    <span class="category-item"><%= link_to task.name, category_task_path(@category, task) %></span>
   <% end %>
-</ol>
+
+</div>
+

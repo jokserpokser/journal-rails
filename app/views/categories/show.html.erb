@@ -1,10 +1,24 @@
-<%= link_to 'Back', categories_path %>
-<h1>Category Name: <%= @category.name %></h1>
-<p>Description: <%= @category.description %></p>
 
-<br/>
-<%= link_to 'View Tasks', category_tasks_path(@category) %>
-<br/>
-<%= link_to 'Edit Category', edit_category_path %>
-<br/>
+<div class="container">
+
+    <%= link_to 'Back', categories_path %>
+    <h4><%= @category.name %></h4>
+    <p><%= @category.description %></p>
+
+    <br/>
+    <div class="add-category-link mg-btm">
+        <%= link_to 'View Tasks', category_tasks_path(@category) %>
+    </div>
+
+    <div class="add-category-link">
+        <%= link_to 'Edit Category', edit_category_path %>
+    </div>
+
+    <div class="delete-btn">
+        <%= button_to 'Delete', category_path, method: :delete %>
+    </div>
+    
+  
+
+</div>
 

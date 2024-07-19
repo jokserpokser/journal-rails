@@ -1,6 +1,10 @@
-<%= link_to 'Back', categories_path %>
-<h1>New Category</h1>
+<div class="container">
+    <%= link_to 'Back', categories_path %>
+    <h1>New Category</h1>
+    
+    <%= render 'form', category: @category %>
+</div>
 
-<%= render 'form', category: @category %>
+
 
 

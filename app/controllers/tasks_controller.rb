@@ -27,7 +27,6 @@ class TasksController < ApplicationController
     end
     
     def update
-      debugger
         if @task.update(task_params)
           redirect_to category_task_path(@category, @task), notice: 'Task was successfully updated.'
         else
