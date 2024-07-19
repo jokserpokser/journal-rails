@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :get_category
+    before_action :get_category, except: :tasks_for_today
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -15,12 +15,12 @@ class TasksController < ApplicationController
     end
     
     def create
-        @task = @category.tasks.build(task_params)
-        if @task.save
-          redirect_to category_tasks_path(@category), notice: 'Task was successfully created.'
-        else
-          render :new
-        end
+      @task = @category.tasks.build(task_params)
+      if @task.save
+        redirect_to category_task_url(@category, @task), notice: 'Task was successfully created.'
+      else
+        render :new
+      end
     end
     
     def edit
@@ -37,6 +37,10 @@ class TasksController < ApplicationController
     def destroy
       @task.destroy
       redirect_to category_tasks_path(@category), notice: 'Task was successfully destroyed.'
+    end
+
+    def tasks_for_today
+      @tasks = Task.all
     end
     
     private

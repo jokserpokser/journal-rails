@@ -2,10 +2,10 @@ require "test_helper"
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:one) # Ensure this fixture exists
     sign_in @user
-    @category = categories(:one)
-    @task = tasks(:one)
+    @category = categories(:one) # Ensure this fixture exists
+    @task = tasks(:one) # Ensure this fixture exists
   end
 
   test "should get index" do
@@ -20,12 +20,14 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create task" do
-    assert_difference('Task.count') do
+    assert_difference('Task.count', 1) do
       post category_tasks_url(@category), params: { task: { name: 'New Task' } }
     end
 
-    assert_redirected_to category_tasks_url(@category)
+    new_task = Task.last
+    assert_redirected_to category_task_url(@category, new_task)
   end
+  
 
   test "should show task" do
     get category_task_url(@category, @task)
@@ -38,22 +40,16 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update task" do
-    patch category_task_path(@category, @task), params: { task: { name: 'Updated Task' } }
+    patch category_task_url(@category, @task), params: { task: { name: 'Updated Task' } }
     assert_redirected_to category_task_url(@category, @task)
+    @task.reload
+    assert_equal 'Updated Task', @task.name
   end
 
   test "should destroy task" do
     assert_difference('Task.count', -1) do
       delete category_task_url(@category, @task)
     end
-
     assert_redirected_to category_tasks_url(@category)
-  end
-
-  private
-
-  def setup_category_and_task
-    @category = Category.create(name: "Sample Category")
-    @task = @category.tasks.create(name: "Sample Task")
   end
 end

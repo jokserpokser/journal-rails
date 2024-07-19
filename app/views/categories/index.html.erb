@@ -2,13 +2,14 @@
 
 <div class="container">
   <h1>Categories</h1>
+  <span class="grey"><%= link_to 'Tasks for Today', tasks_for_today_path	 %></span>
 
   <span class="add-category-link">
     <%= link_to 'Add Category', new_category_path %>
   </span>
   <h4>Name</h4>
   <% @categories.each do |category| %>
-    <span class="category-item">|  <%= link_to category.name, category %>  |</span>
+    <span class="category-item"><%= link_to category.name, category %></span>
   <% end %>
 </div>
 

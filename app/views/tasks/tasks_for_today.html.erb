@@ -1,0 +1,17 @@
+<div class="container">
+    <%= link_to 'Back to Categories', categories_path %>
+    <table>
+        <thead>
+            <tr>
+                <th>Tasks for Today</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @tasks.each do |task| %>
+            <tr>
+                <td><%= link_to task.name, category_task_path(task.category, task) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

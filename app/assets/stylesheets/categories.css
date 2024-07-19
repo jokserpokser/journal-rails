@@ -40,6 +40,31 @@ input[type="text"] {
     text-align: center;
 }
 
+table {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+th {
+    background-color: rgb(53, 53, 53);
+    width: 100%;
+    padding-block: 0.5rem
+}
+
+td {
+    padding-block: 0.5rem;
+    text-align: center;
+    
+}
+
+td a{
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
 
 
 .container {
@@ -124,6 +149,16 @@ input[type="text"] {
 
 .mg-btm {
     margin-bottom: 0.5rem;
+}
+
+.grey a{
+    color: grey;
+    text-decoration: none;
+}
+
+.grey a:hover {
+    color: rgb(219, 219, 219);
+    text-decoration: underline;
 }
 
 
