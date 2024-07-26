@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one) # Assuming you have fixtures or factories set up
+    @user = users(:one)
     sign_in @user
 
     @category = Category.new(name: "Example Category", description: "Example description")
